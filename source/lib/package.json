@@ -1,0 +1,18 @@
+{
+  "name": "Irfan-Band-Site",
+  "version": "1.0.0",
+  "description": "Site of Irfan band.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jazastry",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-route": "^1.4.8",
+    "bootstrap": "^3.3.6",
+    "bootstrap-xl": "^1.0.0",
+    "jquery": "^2.2.0"
+  }
+}
