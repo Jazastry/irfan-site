@@ -12,6 +12,11 @@ var app = angular.module('app', ['ngRoute'])
                 // controller: 'EventsCtrl'
             });
 
+            $routeProvider.when('/music', {
+                templateUrl: 'js/templates/music.html',
+                // controller: 'EventsCtrl'
+            });
+
             $routeProvider.otherwise({
                 redirectTo: '/home'
             });
