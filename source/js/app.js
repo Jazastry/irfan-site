@@ -1,10 +1,15 @@
 var app = angular.module('app', ['ngRoute'])
 .config(['$routeProvider',
         function($routeProvider) {
-        
+
+            $routeProvider.when('/default', {
+                templateUrl: 'js/templates/default.html',
+                controller: 'DefaultCtrl'
+            });            
+
         	$routeProvider.when('/home', {
         	    templateUrl: 'js/templates/home.html',
-        	    // controller: 'HomeCtrl'
+        	    controller: 'HomeCtrl'
         	});
 
             $routeProvider.when('/events', {
@@ -18,7 +23,7 @@ var app = angular.module('app', ['ngRoute'])
             });
 
             $routeProvider.otherwise({
-                redirectTo: '/home'
+                redirectTo: '/default'
             });
         }
     ]);

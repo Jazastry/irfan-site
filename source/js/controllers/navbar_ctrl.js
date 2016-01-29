@@ -1,9 +1,12 @@
 app.controller('navbar_ctrl', ['$scope', function($scope) {
-    var body = document.querySelector("body");
-    body.onscroll = function() {
-        var headerHoneHeight = document.querySelector("header > h1").offsetHeight;
-        var navbar = document.getElementById("nav");
-        var scrollHeight = body.scrollTop;
+    window.onscroll = function() {
+        var headerHoneHeight = document.querySelector("header > .logo_container").offsetHeight;
+        var navbar = document.getElementById("nav");        
+        var scrollHeight = (document.documentElement && document.documentElement.scrollTop) || 
+                      document.body.scrollTop;
+
+                      console.log('scrollHeight ' , scrollHeight);
+
         var hasFixedClass = navbar.className.indexOf('fixed');
         if (scrollHeight >= headerHoneHeight) {
         	if (hasFixedClass < 0) {

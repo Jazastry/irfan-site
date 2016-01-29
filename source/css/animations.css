@@ -1,28 +1,183 @@
 /* make keyframes that tell the start state and the end state of our object */
- 
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
- 
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .fadein {
-	opacity:0;  /* make things invisible upon start */
-	-webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
-	-moz-animation:fadeIn ease-in 1;
-	animation:fadeIn ease-in 1;
- 
-	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
-	-moz-animation-fill-mode:forwards;
-	animation-fill-mode:forwards;
- 
-	-webkit-animation-duration:1.5s;
-	-moz-animation-duration:1.5s;
-	animation-duration:1.5s;
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    animation-duration: 2s;
 }
 
 .fade {
-	-webkit-transition: background-color 0.5s linear;
-	-moz-transition: background-color 0.5s linear;
-	-o-transition: background-color 0.5s linear;
-	-ms-transition: background-color 0.5s linear;
-	transition: background-color 0.5s linear;
+    -webkit-transition: background-color 0.5s linear;
+    -moz-transition: background-color 0.5s linear;
+    -o-transition: background-color 0.5s linear;
+    -ms-transition: background-color 0.5s linear;
+    transition: background-color 0.5s linear;
+}
+
+
+/* TOP ANIMATION */
+
+@keyframes slidein {
+    from {
+        top: -50px;
+    }
+    to {
+        top: 0px;
+    }
+}
+
+@-webkit-keyframes slidein {
+    from {
+        top: -50px;
+    }
+    to {
+        top: 0px;
+    }
+}
+
+
+/* ROTATION ANIMATION */
+
+@-webkit-keyframes rotating
+/* Safari and Chrome */
+
+{
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotatingfrombehind {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 0;
+        width: 5%;
+        top: 50%;
+        left: 50%;
+    }
+    to {
+        -ms-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+        opacity: 0.2;
+        width: 50%;
+        top: 5%;
+        left: 25%;
+    }
+}
+
+@-webkit-keyframes rotatingfrombehind
+/* Safari and Chrome */
+
+{
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 0;
+        width: 0%;
+        top: 50%;
+        left: 50%;
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+        opacity: 0.3;
+        width: 50%;
+        top: 5%;
+        left: 25%;
+    }
+}
+
+@keyframes rotating {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.rotatingbehind {
+    opacity: 0;
+    width: 0%;
+    top: 50%;
+    left: 50%;
+    -webkit-animation: 1s linear 0s forwards rotatingfrombehind;
+    -moz-animation: 1s linear 0s forwards rotatingfrombehind;
+    -ms-animation: 1s linear 0s forwards rotatingfrombehind;
+    -o-animation: 1s linear 0s forwards rotatingfrombehind;
+    animation: 1s linear 0s forwards rotatingfrombehind;
+}
+
+.rotating {
+    -webkit-animation: 34s linear infinite rotating;
+    -moz-animation: 34s linear infinite rotating;
+    -ms-animation: 34s linear infinite rotating;
+    -o-animation: 34s linear infinite rotating;
+    animation: 34s linear infinite rotating;
 }
