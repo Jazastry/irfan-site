@@ -70,50 +70,30 @@
 }
 
 
-/* ROTATION ANIMATION */
-
-@-webkit-keyframes rotating
-/* Safari and Chrome */
-
-{
-    from {
-        -ms-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    to {
-        -ms-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
+/* ROTATIng FROM BEHIND */
 
 @keyframes rotatingfrombehind {
     from {
-        -ms-transform: rotate(0deg);
+       /* -ms-transform: rotate(0deg);
         -moz-transform: rotate(0deg);
         -webkit-transform: rotate(0deg);
         -o-transform: rotate(0deg);
-        transform: rotate(0deg);
+        transform: rotate(0deg);*/
         opacity: 0;
-        width: 5%;
-        top: 50%;
-        left: 50%;
+  /*      width: 30%;
+        top: 25%;
+        left: 35%;*/
     }
     to {
-        -ms-transform: rotate(180deg);
-        -moz-transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
-        -o-transform: rotate(180deg);
-        transform: rotate(180deg);
+  /*      -ms-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);*/
         opacity: 0.2;
-        width: 50%;
+       /* width: 50%;
         top: 5%;
-        left: 25%;
+        left: 25%;*/
     }
 }
 
@@ -145,7 +125,25 @@
     }
 }
 
-@keyframes rotating {
+.rotatingbehind {
+    opacity: 0;
+    /*width: 0%;
+    top: 50%;
+    left: 50%;*/
+    -webkit-animation: 3s linear 0s forwards rotatingfrombehind;
+    -moz-animation: 3s linear 0s forwards rotatingfrombehind;
+    -ms-animation: 3s linear 0s forwards rotatingfrombehind;
+    -o-animation: 3s linear 0s forwards rotatingfrombehind;
+    animation: 3s linear 0s forwards rotatingfrombehind;
+}
+
+
+/* ROTATING */
+
+@-webkit-keyframes rotating
+/* Safari and Chrome */
+
+{
     from {
         -ms-transform: rotate(0deg);
         -moz-transform: rotate(0deg);
@@ -162,16 +160,21 @@
     }
 }
 
-.rotatingbehind {
-    opacity: 0;
-    width: 0%;
-    top: 50%;
-    left: 50%;
-    -webkit-animation: 1s linear 0s forwards rotatingfrombehind;
-    -moz-animation: 1s linear 0s forwards rotatingfrombehind;
-    -ms-animation: 1s linear 0s forwards rotatingfrombehind;
-    -o-animation: 1s linear 0s forwards rotatingfrombehind;
-    animation: 1s linear 0s forwards rotatingfrombehind;
+@keyframes rotating {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 .rotating {
