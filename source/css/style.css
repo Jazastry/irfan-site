@@ -80,6 +80,9 @@ main > section > article {
     opacity: 0;
 }
 
+.player {
+    height: 40px;
+}
 
 /* HEADER */
 
