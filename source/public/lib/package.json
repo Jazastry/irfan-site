@@ -13,6 +13,7 @@
     "angular-route": "^1.4.8",
     "bootstrap": "^3.3.6",
     "bootstrap-xl": "^1.0.0",
+    "expres": "0.0.5",
     "jquery": "^2.2.0"
   }
 }

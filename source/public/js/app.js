@@ -14,7 +14,7 @@ var app = angular.module('app', ['ngRoute'])
 
             $routeProvider.when('/events', {
                 templateUrl: 'js/templates/events.html',
-                // controller: 'EventsCtrl'
+                controller: 'EventsCtrl'
             });
 
             $routeProvider.when('/music', {
