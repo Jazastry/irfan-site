@@ -1,30 +1,16 @@
 app.controller('EventsCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
     // $http({
-    //   method: 'GET',
-    //   url: '/events'
+    //     method: 'GET',
+    //     url: '/events'
     // }).then(function successCallback(response) {
-    // console.log('response ' , response.data);
-    //    // angular.element(response.data).find();
-    //   }, function errorCallback(response) {
-    //   console.log('response ' , response);
-    //     // called asynchronously if an error occurs
-    //     // or server returns response with an error status.
-    //   });
-    $scope.events = [{
-        time: '2015-11-22 Sun 8:30 PM in UTC+01',
-        name: 'Irfan + Cesair',
-        href: 'https://www.facebook.com/events/1386227291707151/',
-        place: {
-            city: 'Groningen',
-            country: 'Netherlands',
-            venue: {
-                name: 'Sempron',
-                href: 'https://www.facebook.com/SimplonNL/'
-            }
-        }
-    }];
+    // console.log('response EVENTS ' , response);
+    //     $scope.events = JSON.parse(response.data.body);
+    //     console.log('JSON.parse(response.data.body) ', JSON.parse(response.data.body));
+    // }, function errorCallback(response) {
+    //     console.log('response ', response);
+    // });
 
-    $scope.date = function(string){
-    	return new Date(string);
+    $scope.date = function(string) {
+        return new Date(string);
     };
 }]);
