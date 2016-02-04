@@ -7,8 +7,8 @@ app.use(express.static('../public'));
 
 var ACCESS_TOKEN = '';
 function requestAccessToken(callback){
-	var APP_SECRET = '5dee82d7217c4fbbf73e71987433760b';
-	var APP_ID = '1678584785723081';
+	var APP_SECRET = '';
+	var APP_ID = '';
 	var tokenUrl = 'https://graph.facebook.com/oauth/access_token?client_id=' +
 		APP_ID + '&client_secret=' + APP_SECRET + '&grant_type=client_credentials';
 
