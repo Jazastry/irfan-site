@@ -5,8 +5,11 @@
     margin-bottom: 5px;
 }
 
-.event {
+.top_line {
     border-top: 2px solid #525252;
+}
+.bottom_line {
+	border-bottom: 2px solid #525252;
 }
 
 .event a {

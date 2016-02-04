@@ -1,17 +1,19 @@
+@import url('./default-style.css');
 @import url('./events-style.css');
 @import url('./animations.css');
 @import url(https://fonts.googleapis.com/css?family=Italianno);
 
 /* HEADINGS */
 
-h1,
+
+/*h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
     font-family: 'Italianno', cursive;
-}
+}*/
 
 h1 {
     font-size: 64px;
@@ -37,12 +39,13 @@ p {
     font-size: 20px;
 }
 
+
 /* DEFAULTS */
 
 body {
     font-family: "Times New Roman", Times, serif;
     background-color: #000;
-/*    background-size: cover;
+    /*    background-size: cover;
     background-image: url('../img/backgrounds/light_windows_web.jpg');
     background-image: url('../img/home-back.jpg');
     background-image: url('http://outlet-parfum.nl/RedBackground.jpg');
@@ -60,6 +63,7 @@ main > section > article {
     padding: 20px;
     margin-top: 20px;
 }
+
 
 /* MY CLASSES */
 
@@ -89,8 +93,16 @@ main > section > article {
     height: 40px;
 }
 
-/* HEADER */
+.font_italiano {
+    font-family: 'Italianno', cursive;
+}
 
+.font_outline_black {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+
+/* HEADER */
 
 .header {
     /*background-color: rgba(0, 0, 0, 0.4);*/
@@ -154,58 +166,51 @@ header > section > section > div > h3 {
     margin-bottom: 3px;
 }
 
-/* default */
 
-.default_main {
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 80px;
-    display: block;
-}
 
-/*.default_main:before {
-    content: "";
-    position: absolute;
-    top: 0; 
-    left: 0;
-    width: 100%; 
-    height: 100%;  
-    opacity: 0.4; 
-    z-index: -1;
-    background: url('../img/backgrounds/light_windows_web.jpg');
-}*/
+/* RESPONSIVE */
 
-.default_main .rosete_img {
-    position: absolute;
-    opacity: 0.2;
-    width: 50%;
-    top: 5%;
-    left: 25%;
-}
 
-.default_main .logo_container {
-    overflow: hidden;
-}
+/* col-sm */
 
-.default_main .irfan_logo {
-    opacity: 0.8;
-    height: 200px;
-}
-
-.default_main .youtube_embed {
-    border: 1px solid #2B2B2B;
-    width: 80%;
-    height: 500px;
-}
-
-.default_main .article_container {
-    padding-left: 30px;
-}
-
-.default_main .button_section {
-    padding-top: 100px;
+@media (min-width: 768px) {
+    .default_btn {
+        font-size: 19px;
+    }
 }
 
 
-/* home */
+/* col-md */
 
+@media (min-width: 992px) {
+    .default_btn {
+        font-size: 14px;
+    }
+}
+
+
+/* col-lg */
+
+@media (min-width: 1200px) {
+    .default_btn {
+        font-size: 19px;
+    }
+}
+
+
+/* col-xl */
+
+@media (min-width: 1700px) {
+    .default_btn {
+        font-size: 25px;
+    }
+}
+
+
+/* col-xs */
+
+@media (max-width: 767px) {
+    .default_btn {
+        font-size: 19px;
+    }
+}
