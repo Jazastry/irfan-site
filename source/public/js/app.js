@@ -22,6 +22,10 @@ var app = angular.module('app', ['ngRoute'])
                 // controller: 'EventsCtrl'
             });
 
+            $routeProvider.when('/google4795b4eacf9ec9ad.html', {
+                templateUrl: 'js/templates/google4795b4eacf9ec9ad.html'
+            });
+
             $routeProvider.otherwise({
                 redirectTo: '/default'
             });
