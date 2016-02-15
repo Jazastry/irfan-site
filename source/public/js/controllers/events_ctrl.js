@@ -3,7 +3,8 @@ app.controller('EventsCtrl', ['$scope', '$http', '$location', function($scope, $
         method: 'GET',
         url: '/events'
     }).then(function successCallback(response) {
-        var events = response.data.data;
+    console.log('response ' , response);
+        var events = response.data;
         console.log('events ' , events);
         separateByYear(events);
 
