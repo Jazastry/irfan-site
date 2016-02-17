@@ -1,9 +1,21 @@
 /* events */
 
-.events_img {
-    margin-right: 10px;
-    margin-bottom: 5px;
+.main_events_background {
+	background-image: url('../img/backgrounds/concert_belgium.jpg');
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-position: top;
+	background-attachment: fixed;
 }
+.main_events_background .container {
+		min-height: 1000px;
+}
+/*.events_img {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: ;
+}*/
 
 .top_line {
     border-top: 2px solid #525252;
@@ -12,9 +24,32 @@
 	border-bottom: 2px solid #525252;
 }
 
+.event {
+	margin: 10px 0px 10px 0px;
+	background-color: rgba(255,255,255,0.1);
+}
+
+.event * {
+    vertical-align: middle; // Align children to middle of line
+}
+
+.event:hover, .event:active {
+	background-color: rgba(255,255,255,0.2);
+}
+
 .event a {
 	text-decoration: none;
 	color: #fff;
+}
+
+.event a {
+    color: #CFCECE;
+    text-decoration: none;
+}
+
+.event a:active, .event a:hover {
+    color: #fff;
+    text-shadow: 0px 0px 30px #fff;
 }
 
 .font_new_times {

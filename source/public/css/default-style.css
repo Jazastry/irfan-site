@@ -1,14 +1,19 @@
 .default_main {
-	margin-top: 10px;
+    margin-top: 10px;
 }
+
 
 /* default */
 
 .default_main {
     position: relative;
     overflow: hidden;
-    padding-bottom: 80px;
+    padding-bottom: 90px;
     display: block;
+}
+
+.default_main .main_label h1 {
+    margin-top: 0px;
 }
 
 .default_main .rosete_img {
@@ -27,22 +32,22 @@
 }
 
 .default_main .eternal_back_img {
-	position: absolute;
-	width: 100%;
-	left: 0px;
-	top: -20%;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: -20%;
 }
 
 .back_img_opacity {
-	opacity: 0.7;
+    opacity: 0.7;
 }
 
 .back_zoom_in_transformation {
-    -webkit-transform: scale(3,3) translate(100px, 100px);
-    -moz-transform: scale(3,3) translate(100px, 100px);
-    -ms-transform: scale(3,3) translate(100px, 100px);
-    -o-transform: scale(3,3) translate(100px, 100px);
-    transform: scale(3,3) translate(100px, 100px);
+    -webkit-transform: scale(3, 3) translate(100px, 100px);
+    -moz-transform: scale(3, 3) translate(100px, 100px);
+    -ms-transform: scale(3, 3) translate(100px, 100px);
+    -o-transform: scale(3, 3) translate(100px, 100px);
+    transform: scale(3, 3) translate(100px, 100px);
 }
 
 .default_main .window_img {
@@ -69,14 +74,169 @@
 
 .default_main .youtube_embed {
     border: 1px solid #2B2B2B;
-    width: 80%;
-    height: 500px;
+    width: 701px;
+    height: 395px;
 }
 
 .default_main .article_container {
     padding-left: 30px;
 }
 
-.default_main .button_section {
+
+/*.default_main .button_section {
     padding-top: 100px;
+}*/
+
+.default_main .button_section .default_btn {
+    padding: 0px 25px 0px 25px;
+    font-size: 25px;
+}
+
+
+/* RESPONSIVE */
+
+
+/* col-sm */
+
+@media (min-width: 768px) {
+    .default_main .irfan_logo {
+        height: 150px;
+    }
+    .default_main .main_label h1 {
+        font-size: 49px;
+    }
+    .default_main .ark_img {
+        width: 60%;
+        top: 8%;
+        left: 16%;
+    }
+    .default_main .album_text article {
+        margin-top: 0px;
+    }
+    .default_main .album_text article h2 {
+        margin-top: 0px;
+    }
+}
+
+
+/* col-md */
+
+@media (min-width: 992px) {
+    .default_main .irfan_logo {
+        height: 200px;
+    }
+    .default_main .main_label h1 {
+        font-size: 50px;
+    }
+    .default_main .ark_img {
+        width: 40%;
+        top: 15%;
+        left: 28%;
+    }
+    .default_main .album_text article {
+        margin-top: 0px;
+    }
+    .default_main .album_text article h2 {
+        margin-top: 0px;
+    }
+    .default_main .youtube_embed {
+        margin-top: 21px;
+        width: 457px;
+        height: 257px;
+    }
+}
+
+
+/* col-lg */
+
+@media (min-width: 1200px) {
+    .default_main .irfan_logo {
+        height: 200px;
+    }
+    .default_main .main_label h1 {
+        font-size: 64px;
+    }
+    .default_main .ark_img {
+        width: 40%;
+        top: 15%;
+        left: 28%;
+    }
+    .default_main .album_text article {
+        margin-top: 0px;
+    }
+    .default_main .album_text article h2 {
+        margin-top: 0px;
+    }
+    .default_main .youtube_embed {
+        margin-top: 21px;
+        width: 457px;
+        height: 257px;
+    }
+    /*    .default_main .button_section .default_btn {
+        font-size: 25px;
+    }*/
+}
+
+
+/* col-xl */
+
+@media (min-width: 1700px) {
+    .default_main .irfan_logo {
+        opacity: 0.8;
+        height: 200px;
+    }
+    .default_main .main_label h1 {
+        font-size: 64px;
+    }
+    .default_main .ark_img {
+        width: 30%;
+        top: 18%;
+        left: 33%;
+    }
+    .default_main .album_text article {
+        margin-top: 40px;
+    }
+ 
+    .default_main .youtube_embed {
+        width: 701px;
+        height: 395px;
+    }
+    /*    .default_main .button_section .default_btn {
+        font-size: 25px;
+    }*/
+}
+
+
+/* col-xs */
+
+@media (max-width: 767px) {
+    .default_main .irfan_logo {
+        width: 100%;
+        height: 100px;
+    }
+    .default_main .main_label h1 {
+        font-size: 24px;
+    }
+    .default_main .ark_img {
+        width: 60%;
+        top: 8%;
+        left: 16%;
+    }
+    .default_main .button_section .default_btn {
+        font-size: 1em;
+    }
+    .default_main .album_text article {
+        margin-top: 0px;
+    }
+    .default_main .album_text article h2 {
+        margin-top: 0px;
+        font-size: 1em;
+    }
+    .default_main .album_text article h3 {
+        font-size: 0.5em;
+    }
+    .default_main .youtube_embed {
+        width: 100%;
+        height: 257px;
+    }
 }

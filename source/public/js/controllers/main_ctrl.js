@@ -1,4 +1,2 @@
-app.controller('main_ctrl', ['$scope', '$location',
-	function($scope, $location){
-	$scope.location = $location;
+app.controller('main_ctrl', ['$scope', '$location',	function($scope, $location){
 }]);

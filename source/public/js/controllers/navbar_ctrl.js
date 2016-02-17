@@ -1,4 +1,4 @@
-app.controller('navbar_ctrl', ['$scope', '$location', function($scope, $location) {
+app.controller('navbar_ctrl', ['$scope', '$location', '$timeout', function($scope, $location, $timeout) {
 
     // window.onscroll = function() {
     //     var headerHoneHeight = document.querySelector("header > .logo_container").offsetHeight;
@@ -17,11 +17,5 @@ app.controller('navbar_ctrl', ['$scope', '$location', function($scope, $location
     //     	}            
     //     }
     // };
-
-    $scope.goTo = function(location){
-        if ($location.path() !== location) {
-            window.scrollTo(0, 0);
-            $location.path(location);
-        }
-    };
+    $scope.selectedLocation = $location.path();
 }]);

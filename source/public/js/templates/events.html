@@ -1,20 +1,21 @@
-<navbar></navbar>
-<section class="container">
-    <!-- http://mementomori.hu/gothic/sites/default/files/2014jul/_MG_7562.JPG 
+<section class="main_events_background">
+    <navbar></navbar>
+    <section class="container">
+        <!-- http://mementomori.hu/gothic/sites/default/files/2014jul/_MG_7562.JPG 
 http://www.lagrosseradio.com/_images/fck/18456.jpg 
 http://www.cineversity.tv/artist/Irfan/tv/Irfan%20plays%20Hagia%20Sofia.jpg
 https://i.ytimg.com/vi/_SmC_vUMH5Q/maxresdefault.jpg -->
-    <main class="main_events">
-        <section class="col-lg-12 col-xl-12">
-            <article class="fadein col-lg-12 col-xl-12">
-                <img class="col-lg-6 col-lg-offset-3 col-xl-6 col-xl-offset-3 events_img" align="left" src="https://i.ytimg.com/vi/_SmC_vUMH5Q/maxresdefault.jpg " alt="">
-            </article>
-        </section>
-        <section>
-            <article class="fadein bottom_line col-lg-12 col-xl-12" ng-repeat="events in eventsByYear">
-                <h1 class="text-center font_new_times col-xl-12">{{events[0].start_time | date : 'yyyy'}}</h1>
-                <article class="col-lg-12 event top_line" ng-repeat="event in events">
-                <!-- <table class="col-lx-12" ng-repeat="event in events">
+        <main class="main_events col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!--  <section class="col-lg-12 col-xl-12">
+            <article class="fadein col-lg-12 col-xl-12"> -->
+           <!--  <img class="events_img" align="left" src="https://i.ytimg.com/vi/_SmC_vUMH5Q/maxresdefault.jpg " alt="Irfan concert MixTape september 2015"> -->
+            <!--     </article>
+        </section> -->
+            <section>
+                <article class="fadein col-lg-12 col-xl-12" ng-repeat="events in eventsByYear">
+                    <h1 class="text-center font_new_times col-xl-12">{{events[0].start_time | date : 'yyyy'}}</h1>
+                    <article class="col-lg-12 event" ng-repeat="event in events">
+                        <!-- <table class="col-lx-12" ng-repeat="event in events">
                     <tbody class="col-xl-12">
                         <td class="col-xl-2">
                             <time datetime="{{event.start_time | date : 'yyyy-MM-dd' }}">{{event.start_time | date : 'd' }}</time>
@@ -39,21 +40,22 @@ https://i.ytimg.com/vi/_SmC_vUMH5Q/maxresdefault.jpg -->
                         </tr>
                     </tbody>
                 </table> -->
-                  <section class="col-lg-2">
-                        <h3 class="font_new_times text-center"><time datetime="{{event.start_time | date : 'yyyy-MM-dd' }}">{{event.start_time | date : 'd' }}</time></h3>
-                        <h5 class="font_new_times text-center"><time datetime="{{event.start_time | date : 'yyyy-MM-dd' }}">{{event.start_time | date : 'MMM' }}</time></h5>
-                    </section>
-                    <section class="col-lg-5">
-                        <a href="https://www.facebook.com/events/{{event.id}}/" target="_blank"><h3 class="font_new_times">{{event.name}}</h3></a>
-                        <h5 class="font_new_times"><time datetime="{{event.start_time | date : 'yyyy-MM-dd' }}">{{event.start_time | date : 'd MMMM yyyy' }}</time></h5>
-                    </section>
-                    <section class="col-lg-5">
-                        <a href="https://www.facebook.com/{{event.place.id}}/" target="_blank"><h3 class="font_new_times">{{event.place.name}}</h3></a>
-                        <h5 class="font_new_times">{{event.place.location.city}} <span ng-if="event.place.location.country"> , </span> {{event.place.location.country}}</h5>
-                    </section> 
-            </article>
-            </article>
-        </section>
-    </main>
+                        <section class="col-lg-2">
+                            <h3 class="font_new_times text-center"><time datetime="{{event.start_time | date : 'yyyy-MM-dd' }}">{{event.start_time | date : 'd' }}</time></h3>
+                            <h5 class="font_new_times text-center"><time datetime="{{event.start_time | date : 'yyyy-MM-dd' }}">{{event.start_time | date : 'MMM' }}</time></h5>
+                        </section>
+                        <section class="col-lg-5">
+                            <a class="animate_all_fast" href="https://www.facebook.com/events/{{event.id}}/" target="_blank"><h3 class="font_new_times">{{event.name}}</h3></a>
+                            <h5 class="font_new_times"><time datetime="{{event.start_time | date : 'yyyy-MM-dd' }}">{{event.start_time | date : 'd MMMM yyyy' }}</time></h5>
+                        </section>
+                        <section class="col-lg-5">
+                            <a class="animate_all_fast" href="https://www.facebook.com/{{event.place.id}}/" target="_blank"><h3 class="font_new_times">{{event.place.name}}</h3></a>
+                            <h5 class="font_new_times">{{event.place.location.city}} <span ng-if="event.place.location.country"> , </span> {{event.place.location.country}}</h5>
+                        </section>
+                    </article>
+                </article>
+            </section>
+        </main>
+    </section>
+    <my-footer></my-footer>
 </section>
-<my-footer></my-footer>

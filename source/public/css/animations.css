@@ -40,6 +40,19 @@
     animation-duration: 3s;
 }
 
+.fadein_fast {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
 .fade {
     opacity: 0;
     -webkit-transition: opacity 2s linear 0;
@@ -171,6 +184,14 @@
     -ms-transition: 2s ease-in-out all 0.5s;
     -o-transition: 2s ease-in-out all 0.5s;
     transition: 2s ease-in-out all 0.5s;
+}
+
+.animate_all_fast {
+    -webkit-transition: 0.5s linear all 0.5s;
+    -moz-transition: 0.5s linear all 0.5s;
+    -ms-transition: 0.5s linear all 0.5s;
+    -o-transition: 0.5s linear all 0.5s;
+    transition: 0.5s linear all 0.5s;
 }
 
 .slow_animate_all {
