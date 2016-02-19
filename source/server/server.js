@@ -98,22 +98,7 @@ if (!ACCESS_TOKEN) {
 
 
 app.get('/events', function(req, res) {
-    // if (!ACCESS_TOKEN) {
-    //     requestAccessToken(function() {
-    //         requestEvents(function(data) {
     res.send(events);
-    //         });
-    //     });
-
-    //     eventsArray();
-    // } else {
-    //     requestEvents(function(data) {
-    //         res.send(data);
-    //     });
-
-    //     eventsArray();
-    // }
-
 });
 
 app.get('/event', function(req, res) {
