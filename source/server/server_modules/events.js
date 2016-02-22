@@ -1,62 +1,33 @@
 module.exports = (function() {
     function Events() {
         this.events = [];
-        this.facebookRequester = require('./facebook_requester.js');
+        this.facebookRequester = require('./facebook_requester_es6.js');
+        this.loadEvents();
     }
 
     Events.prototype.loadEvents = function(callback) {
         var _this = this;
 
-        if (_this.facebookRequester.ACCESS_TOKEN) {
-            _this.facebookRequester.requestAccessToken(function() {
-                _this.eventsArray();
+        _this.facebookRequester.getEvents()
+            .then(function(events) {
+                _this.events = events;
             });
-        } else {
-            _this.eventsArray();
-        }
-
+        _this.listenForDataChanges();
     };
 
-    Events.prototype.eventsArray = function() {
+    Events.prototype.listenForDataChanges = function() {
         var _this = this;
+        var fs = require('fs');
 
-        fs = require('fs');
-        var eventIds = [];
-
-        function getEventsRecurse(index) {
-            var i = index;
-            if (i < eventIds.length) {
-                requestEvent(eventIds[i], function(data) {
-                    events.push(data);
-                    index += 1;
-                    getEvents(index);
-                });
-            } else {
-                return events;
+        fs.watch('../data/events.json', function(a) {
+            if (a === 'change') {
+                _this.facebookRequester.getEvents()
+                    .then(function(events) {
+                        _this.events = events;
+                    });
             }
-        }
-
-        function getEvents() {
-            for (var i = 0; i < eventIds.length; i++) {
-                requestEvent(eventIds[i], function(data) {
-                    _this.events.push(JSON.parse(data));
-
-                    if (events.length === eventIds.length) {
-                        events = events.sort(function(a, b) {
-                            return new Date(b.start_time) - new Date(a.start_time);
-                        });
-                    }
-                });
-            }
-        }
-        fs.readFile(__dirname + '/data/events.json', 'utf8', function(err, data) {
-            if (err) {
-                return console.log(err);
-            }
-
-            eventIds = JSON.parse(data);
-            getEvents();
         });
-
     };
+
+    return new Events();
 }());

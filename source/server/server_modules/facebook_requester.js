@@ -1,12 +1,17 @@
 module.exports = (function() {
-    function FacebookRequester() {
-        this.fs = require('fs');
-        this.request = require('request');
-        this.ACCESS_TOKEN = '';
-        this.events = [];
+    class FacebookRequester {
+        constructor(){
+            this.fs = require('fs');
+            this.request = require('request');
+            this.ACCESS_TOKEN = false;
+            this.events = [];
+            this.getAccessToken(function() {
+                _this.loadEventsArray();
+            });
+        }
     }
 
-    FacebookRequester.prototype.requestAccessToken = function(callback) {
+    FacebookRequester.prototype.getAccessToken = function(callback) {
         var _this = this;
 
         var APP_SECRET = '8c90e9698c5e102cdbca03416749b4fa';
@@ -54,10 +59,10 @@ module.exports = (function() {
             }
         });
     }
-
-    function eventsArray() {
-        fs = require('fs');
+    FacebookRequester.prototype.loadEventsArray = function(first_argument) {
+        var _this = this;        
         var eventIds = [];
+        fs = require('fs');
 
         function getEventsRecurse(index) {
             var i = index;
@@ -71,11 +76,11 @@ module.exports = (function() {
                 return events;
             }
         }
+
         function getEvents() {
             for (var i = 0; i < eventIds.length; i++) {
-                requestEvent(eventIds[i], function(data) {
+                _this.requestEvent(eventIds[i], function(data) {
                     _this.events.push(JSON.parse(data));
-
                     if (events.length === eventIds.length) {
                         events = events.sort(function(a, b) {
                             return new Date(b.start_time) - new Date(a.start_time);
@@ -84,26 +89,27 @@ module.exports = (function() {
                 });
             }
         }
+
         fs.readFile(__dirname + '/data/events.json', 'utf8', function(err, data) {
             if (err) {
                 return console.log(err);
             }
-
             eventIds = JSON.parse(data);
             getEvents();
         });
-    }
+    };
 
-    requestAccessToken();
     FacebookRequester.prototype.loadEvents = function(first_argument) {
         var _this = this;
 
-        if (_this.ACCESS_TOKEN) {
-            _this.requestAccessToken(function() {
-                eventsArray();
+        if (! _this.ACCESS_TOKEN) {
+            _this.getAccessToken(function() {
+                _this.eventsArray();
             });
         } else {
-            eventsArray();
+            _this.eventsArray();
         }
     };
+
+    return new FacebookRequester();
 }());
