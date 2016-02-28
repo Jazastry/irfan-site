@@ -3,7 +3,7 @@ var request = require('request');
 var app = express();
 
 // serve public files
-app.use(express.static('../public'));
+app.use(express.static(['../public','../admin']));
 
 var ACCESS_TOKEN = '';
 
