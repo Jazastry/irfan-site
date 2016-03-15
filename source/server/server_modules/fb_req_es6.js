@@ -6,10 +6,10 @@ module.exports = (function() {
 
     class FacebookRequester {
         constructor() {
-            var _this = this;
             this.ACCESS_TOKEN = false;
             this.events = [];
-            _this.loadEvents();
+            this.getEvents();
+            this.getAccessToken();
         }
 
         getAccessToken() {
@@ -25,6 +25,8 @@ module.exports = (function() {
                         _this.ACCESS_TOKEN = body;
 
                         resolve();
+                    } else {
+                        reject();
                     }
                 });
             });
@@ -73,44 +75,24 @@ module.exports = (function() {
 
                         _this.events = events;
 
-                        resolve();
+                        resolve(events);
                     });
                 });
             });
         }
 
 
-        loadEvents() {
+        getEvents() {
             var _this = this;
             return new Promise(function(resolve) {
 
                 if (!_this.ACCESS_TOKEN) {
                     _this.getAccessToken()
                         .then(function() {
-                            _this.loadEventsArray()
-                                .then(function() {
-                                resolve();
-                            });
+                            resolve(_this.loadEventsArray());
                         });
                 } else {
-                    _this.loadEventsArray()
-                        .then(function() {
-                            resolve();
-                        });
-                }
-            });
-        }
-
-        getEvents() {
-            var _this = this;
-            return new Promise(function(resolve) {
-                if (_this.events.length === 0) {
-                    _this.loadEvents()
-                        .then(function() {
-                            resolve(_this.events);
-                        });
-                } else {
-                    resolve(_this.events);
+                      resolve(_this.loadEventsArray());
                 }
             });
         }
