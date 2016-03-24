@@ -6,10 +6,8 @@ module.exports = (function() {
 
     class FacebookRequester {
         constructor() {
-            var _this = this;
             this.ACCESS_TOKEN = false;
-            this.events = [];
-            _this.loadEvents();
+            this.getAccessToken();
         }
 
         getAccessToken() {
@@ -23,8 +21,9 @@ module.exports = (function() {
                 request(tokenUrl, function(error, response, body) {
                     if (!error && response.statusCode == 200) {
                         _this.ACCESS_TOKEN = body;
-
                         resolve();
+                    } else {
+                        reject();
                     }
                 });
             });
@@ -47,75 +46,54 @@ module.exports = (function() {
 
         loadEventsArray() {
             var _this = this;
-            let eventIds = [];
             return new Promise(function(resolve, reject) {
-                function allEventsArray() {
+                function allEventsArray(eventIds) {
                     var eventRequestsArr = [];
-
                     for (var i = 0; i < eventIds.length; i++) {
                         eventRequestsArr.push(_this.requestEvent(eventIds[i]));
                     }
-
                     return eventRequestsArr;
                 }
 
-                fs.readFile('../data/events.json', 'utf8', function(err, data) {
+                fs.readFile('./data/events.json', 'utf8', function(err, data) {
                     if (err) {
                         reject(err);
-                        console.log(err);
                     }
-                    eventIds = JSON.parse(data);
-
-                    Promise.all(allEventsArray()).then(function(events) {
-                        events = events.sort(function(a, b) {
-                            return new Date(b.start_time) - new Date(a.start_time);
+                    var eventIds = JSON.parse(data);
+                    Promise.all(allEventsArray(eventIds)).then(function(events) {                                            
+                        events = _this.parseEvents(events);
+                        events = events.sort(function(a, b) {                            
+                            return new Date(b['start_time']) - new Date(a['start_time']);
                         });
-
-                        _this.events = events;
-
-                        resolve();
+                        resolve(events);
                     });
                 });
             });
         }
 
-
-        loadEvents() {
-            var _this = this;
-            return new Promise(function(resolve) {
-
-                if (!_this.ACCESS_TOKEN) {
-                    _this.getAccessToken()
-                        .then(function() {
-                            _this.loadEventsArray()
-                                .then(function() {
-                                resolve();
-                            });
-                        });
-                } else {
-                    _this.loadEventsArray()
-                        .then(function() {
-                            resolve();
-                        });
-                }
-            });
+        parseEvents(data) {
+            var res = [];
+            // parse json data
+            for (var i = 0; i < data.length; i++) {
+                res.push(JSON.parse(data[i]));
+            }
+            return res;
         }
 
         getEvents() {
             var _this = this;
             return new Promise(function(resolve) {
-                if (_this.events.length === 0) {
-                    _this.loadEvents()
+                if (!_this.ACCESS_TOKEN) {
+                    _this.getAccessToken()
                         .then(function() {
-                            resolve(_this.events);
+                            resolve(_this.loadEventsArray());
                         });
                 } else {
-                    resolve(_this.events);
+                    resolve(_this.loadEventsArray());
                 }
             });
         }
     }
-
 
     return new FacebookRequester();
 }());

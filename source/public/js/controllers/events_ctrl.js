@@ -10,26 +10,17 @@ app.controller('EventsCtrl', ['$scope', '$http', '$location', function($scope, $
     });
 
     function separateByYear(events) {
-        var lastYear = 0;
-        var byYear = [];
-        var currentEventsArr = [];
-        var eventIds = [];
+        var byYear = {};
         for (var i = 0; i < events.length; i++) {
             var year = new Date(events[i].start_time).getFullYear();
-            eventIds.push(events[i].id);
-            if(lastYear !== year && i > 0) {
-                byYear.push(currentEventsArr);
-                currentEventsArr = [];
-                currentEventsArr.push(events[i]);
+            if (byYear[year]) {
+                byYear[year].push(events[i]);
             } else {
-                currentEventsArr.push(events[i]);
-            }
-
-            lastYear = year;
+                byYear[year] = [];
+                byYear[year].push(events[i]);
+            }            
         }
-
-        $scope.eventsByYear = byYear;
+        $scope.eventsByYear = byYear;//byYear;
     }
-
     
 }]);

@@ -1,31 +1,47 @@
 module.exports = (function() {
     function Events() {
         this.events = [];
-        this.facebookRequester = require('./fb_req_es6.js');
+        this.subscribtions = [];
+        this.facebookRequester = require('./fb_req.js');
         this.loadEvents();
+        this.listenForDataChanges();
     }
+
+    Events.prototype.subscribe = function(callback) {
+        var _this = this;
+        _this.subscribtions.push(callback);        
+    };
+
+    Events.prototype.broadcast = function() {
+        var _this = this;
+        // send data to subscribers
+        for (var j = 0; j < _this.subscribtions.length; j++) {
+            console.log('serve events');
+            _this.subscribtions[j](_this.events);
+        }
+    };
 
     Events.prototype.loadEvents = function() {
         var _this = this;
 
         _this.facebookRequester.getEvents()
-            .then(function(events) {
-            console.log('events ' , events);
-                _this.events = events;
+            .then(function(data) {     
+                _this.events = data;
+                _this.broadcast();
             });
-
-        // _this.listenForDataChanges();
     };
 
     Events.prototype.listenForDataChanges = function() {
         var _this = this;
         var fs = require('fs');
+        var jsonPath = './data/events.json';//'../server/data/events.json'; // '../data/events.json'
 
-        fs.watch('../data/events.json', function(a) {
-            if (a === 'change') {
+        fs.watch(jsonPath, function(changesInfo) {
+            if (changesInfo === 'change') {
                 _this.facebookRequester.getEvents()
-                    .then(function(events) {
-                        _this.events = events;
+                    .then(function(data) {                        
+                        _this.events = data;
+                        _this.broadcast();
                     });
             }
         });
