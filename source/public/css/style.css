@@ -103,6 +103,34 @@ main > section > article {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.column_l {
+    position: fixed;
+    height: 90%;
+    left: 0px;
+    top: 14%;
+    opacity: 0.3;
+    width: 15%;
+}
+
+.back_center_a {
+    position: fixed;
+    height: 100%;
+    left: 25%;
+    top: 10%;
+    opacity: 0.6;
+    width: 50%;
+    z-index: 0;
+}
+
+.column_r {
+    position: fixed;
+    height: 90%;
+    right: 0px;
+    top: 14%;
+    opacity: 0.3;
+    width: 15%;
+}
+
 
 /* RESPONSIVE */
 

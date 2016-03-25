@@ -1,0 +1,9 @@
+/* music */
+
+.main_music_background {
+	background-image: url('../img/backgrounds/concert_belgium.jpg');
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-position: top;
+	background-attachment: fixed;
+}

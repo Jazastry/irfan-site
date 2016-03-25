@@ -40,6 +40,19 @@
     animation-duration: 3s;
 }
 
+.fadein_slow {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 9s;
+    -moz-animation-duration: 9s;
+    animation-duration: 9s;
+}
+
 .fadein_fast {
     opacity: 0;
     -webkit-animation: fadeIn ease-in 1;
