@@ -17,9 +17,9 @@ app.controller('DefaultCtrl', ['$scope', '$timeout', function($scope, $timeout) 
 
     });
 
-    $scope.openHome = function() {
+    $scope.open = function(url) {
         window.open(
-            '#/home',
+            '#/' + url,
             '_blank'
         );
     };

@@ -1,3 +1,3 @@
-app.controller('HomeCtrl',['$scope' ,function($scope){
+app.controller('NewsCtrl',['$scope' ,function($scope){
 
 }]);

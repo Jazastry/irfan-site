@@ -7,9 +7,9 @@ var app = angular.module('app', ['ngRoute'])
                 controller: 'DefaultCtrl'
             });            
 
-        	$routeProvider.when('/home', {
-        	    templateUrl: 'js/templates/home.html',
-        	    controller: 'HomeCtrl'
+        	$routeProvider.when('/news', {
+        	    templateUrl: 'js/templates/news.html',
+        	    controller: 'NewsCtrl'
         	});
 
             $routeProvider.when('/events', {
@@ -17,9 +17,9 @@ var app = angular.module('app', ['ngRoute'])
                 controller: 'EventsCtrl'
             });
 
-            $routeProvider.when('/music', {
-                templateUrl: 'js/templates/music.html',
-                // controller: 'EventsCtrl'
+            $routeProvider.when('/media', {
+                templateUrl: 'js/templates/media.html',
+                controller: 'MediaCtrl'
             });
 
             $routeProvider.when('/google4795b4eacf9ec9ad.html', {

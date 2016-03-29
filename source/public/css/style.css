@@ -1,5 +1,6 @@
 @import url('./header.css');
 @import url('./default-style.css');
+@import url('./news.css');
 @import url('./events-style.css');
 @import url('./animations.css');
 @import url(https://fonts.googleapis.com/css?family=Italianno);
@@ -90,11 +91,6 @@ main > section > article {
     opacity: 0;
 }
 
-.player {
-    margin-top: 40px;
-    height: 40px;
-}
-
 .font_italiano {
     font-family: 'Italianno', cursive;
 }
@@ -110,6 +106,16 @@ main > section > article {
     top: 14%;
     opacity: 0.3;
     width: 15%;
+}
+
+.back_center {
+    position: fixed;
+    height: 100%;
+    left: 25%;
+    top: 10%;
+    opacity: 0.6;
+    width: 50%;
+    z-index: 0; 
 }
 
 .back_center_a {
@@ -131,6 +137,18 @@ main > section > article {
     width: 15%;
 }
 
+.my_a, .my_a:visited, .my_a:link {
+    text-decoration: none;
+    color: #BBBBBB;
+    font-style: italic;
+    text-shadow: 0px 0px 30px #fff;
+    font-size: 22px;  
+}
+
+.my_a:hover, .my_a:active {
+    text-decoration: none;
+    color: #fff;
+}
 
 /* RESPONSIVE */
 
