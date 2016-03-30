@@ -61,10 +61,11 @@ module.exports = (function() {
                     }
                     var eventIds = JSON.parse(data);
                     Promise.all(allEventsArray(eventIds)).then(function(events) {                                            
-                        events = _this.parseEvents(events);
+                        events = _this.parseEvents(events);                        
                         events = events.sort(function(a, b) {                            
                             return new Date(b['start_time']) - new Date(a['start_time']);
                         });
+
                         resolve(events);
                     });
                 });
@@ -82,13 +83,15 @@ module.exports = (function() {
 
         getEvents() {
             var _this = this;
-            return new Promise(function(resolve) {
+            return new Promise(function(resolve, reject) {
                 if (!_this.ACCESS_TOKEN) {
                     _this.getAccessToken()
                         .then(function() {
+                            console.log('IN NO TOKEN ');
                             resolve(_this.loadEventsArray());
                         });
                 } else {
+                    console.log('IN HAS TOKEN');
                     resolve(_this.loadEventsArray());
                 }
             });
