@@ -1,6 +1,8 @@
 try {
+    // express initialization
     var express = require('express');
-    var ev = require('./server_modules/events.js');
+    var _events = require('./server_modules/events.js');
+    var _audio = require('./server_modules/audio.js');
     var app = express();
     var serverPort = 9999;
 
@@ -8,7 +10,7 @@ try {
     app.use(express.static('../public'));
 
     app.get('/events', function(req, res) {
-    	ev.getEvents(function(events){
+    	_events.getEvents(function(events){
     		console.log('GET EVENTS - events.len \r\n', events.length);
     		res.send(events);
     	});        
@@ -16,6 +18,10 @@ try {
 
     app.get('/event', function(req, res) {
 
+    });
+
+    app.get('/audio', function(req, res) {
+        _audio.init(req, res);
     });
 
     var server = app.listen(serverPort, function() {

@@ -6,7 +6,7 @@ module.exports = (function() {
 
     class FacebookRequester {
         constructor() {
-            this.ACCESS_TOKEN = false;
+            this.ACCESS_TOKEN = null;
             this.getAccessToken();
         }
 
@@ -63,7 +63,7 @@ module.exports = (function() {
                     Promise.all(allEventsArray(eventIds)).then(function(events) {                                            
                         events = _this.parseEvents(events);                        
                         events = events.sort(function(a, b) {                            
-                            return new Date(b['start_time']) - new Date(a['start_time']);
+                            return new Date(b.start_time) - new Date(a.start_time);
                         });
 
                         resolve(events);
