@@ -55,20 +55,98 @@ module.exports = (function() {
                     return eventRequestsArr;
                 }
 
-                fs.readFile('./data/events.json', 'utf8', function(err, data) {
+                fs.readFile('./data/fbEventIds.json', 'utf8', function(err, data) {
                     if (err) {
                         reject(err);
                     }
                     var eventIds = JSON.parse(data);
-                    Promise.all(allEventsArray(eventIds)).then(function(events) {                                            
-                        events = _this.parseEvents(events);                        
-                        events = events.sort(function(a, b) {                            
+                    Promise.all(allEventsArray(eventIds)).then(function(events) {
+                        events = _this.parseEvents(events);
+                        events = events.sort(function(a, b) {
                             return new Date(b.start_time) - new Date(a.start_time);
                         });
 
                         resolve(events);
                     });
                 });
+            });
+        }
+
+        reloadEvents() {
+            var _this = this;
+            return new Promise(function(resolve, reject) {
+                function allEventsArray(eventIds) {
+                    var eventRequestsArr = [];
+                    for (var i = 0; i < eventIds.length; i++) {
+                        eventRequestsArr.push(_this.requestEvent(eventIds[i]));
+                    }
+                    return eventRequestsArr;
+                }
+
+                fs.readFile('./data/fbEventIds.json', 'utf8', (err, data) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    var eventIds = JSON.parse(data);
+                    Promise.all(allEventsArray(eventIds)).then(function(events) {
+                        events = _this.parseEvents(events);
+                        _this.fetchEvents(events, function(ev) {
+                            _this.writeEvents(events, function() {
+                                resolve();
+                            });
+                        });
+                    });
+                });
+            });
+        }
+
+        writeEvents(events, callback) {
+            fs.writeFile('./data/events.json', JSON.stringify(events), 'utf8', (err) => {
+                if (err) {
+                    reject(err);
+                }
+                console.log('IN WRITE EV');
+                callback();
+            });
+        }
+
+        fetchEvents(events, callback) {
+            var _this = this;
+            fs.readFile('./data/events.json', 'utf8', (err, data) => {
+                if (err) {
+                    reject(err);
+                }
+                var currentEvents = JSON.parse(data);
+                if (currentEvents.length > 0) {
+                    for (var i = 0; i < events.length; i++) {
+                        var present = currentEvents.filter(function(ev) {
+                            return ev.facebook && ev.id == events[i].id;
+                        });
+
+                        if (present.length < 1) {
+                            events[i].facebook = true;
+                            currentEvents.push(events[i]);
+                        }
+                    }
+
+                    for (var j = 0; j < currentEvents.length; j++) {
+                        var present = events.filter(function(ev) {
+                            return ev.id === currentEvents[j].id;
+                        });
+                        if (currentEvents[j].facebook && present.length < 1) {
+                            currentEvents.splice(j, 1);
+                        }
+                    }
+                    callback(_this.sortEvents(currentEvents));
+                } else {
+                    callback(_this.sortEvents(events));
+                }
+            });
+        }
+
+        sortEvents(ev) {
+            return ev.sort(function(a, b) {
+                return new Date(b.start_time) - new Date(a.start_time);
             });
         }
 
